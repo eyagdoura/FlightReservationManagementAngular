@@ -1,0 +1,92 @@
+<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+    <div class="container" style="margin-top: 4%;">
+        <div class="row align-items-center">
+            <div class="col-lg-6 px-lg-4">
+                <div class="card">
+                    <div class="card-header px-lg-5">
+                        <img class="logo-plateform" src="assets/logo.jpg">
+                        <span class="textnone plateform-text">Plateforme de Réservation</span>
+                    </div>
+                    <div class="card-body p-lg-5">
+                        <div *ngIf="existClient">
+                            <p class="errorMessage">Compte existe avec ce mail</p>
+                        </div>
+                        <h3 class="mb-4">Inscrivez-vous !</h3>
+                        <form [formGroup]="inscriForm" (ngSubmit)="onSubmit()">
+
+                            <div class="float-container form-floating mb-3">
+                                <div class="float-child form-floating mb-3">
+                                    <input class="form-control" type="text" formControlName="first_name"
+                                        [ngClass]="{ 'is-invalid': submitted && f['first_name'].errors }"
+                                        [(ngModel)]='user.first_name'>
+
+                                    <label for="firstName">Nom</label>
+                                    <div *ngIf="submitted && f['first_name'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['first_name'].errors['required']">First Name is required</div>
+                                    </div>
+                                </div>
+
+                                <div class="float-child form-floating mb-3">
+                                    <input class="form-control" type="text" formControlName="last_name"
+                                        [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors }"
+                                        [(ngModel)]='user.last_name'>
+
+                                    <label for="last_name">Prènom</label>
+                                    <div *ngIf="submitted && f['last_name'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['last_name'].errors['required']">Last Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="email" formControlName="email_address"
+                                    [ngClass]="{ 'is-invalid': submitted && f['email_address'].errors }"
+                                    [(ngModel)]='user.email_address'>
+                                <label for="email_address">Adress e-mail</label>
+                                <div *ngIf="submitted && f['email_address'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['email_address'].errors['required']">e-mail is required</div>
+                                    <div *ngIf="f['email_address'].errors['email']">e-mail is invalid</div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="tel" formControlName="phone"
+                                    [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+                                    [(ngModel)]='user.phone'>
+                                <label for="phone">télephone d'utilisateur</label>
+
+                                <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['phone'].errors['required']">phone is required</div>
+                                    <div *ngIf="f['phone'].errors['pattern']">phone is invalid ex: 20333444</div>
+                                </div>
+
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="password" formControlName="password"
+                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                                    [(ngModel)]='user.password'>
+                                <label for="password">Mot de passe</label>
+                                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                    <div *ngIf="f['password'].errors['minlength']">Min length password 8</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer px-lg-5 py-lg-4">
+                        <div class="text-sm text-muted">Vous avez un compte déjà ? <a [routerLink]="['/login']">Se
+                                Connecter</a>.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

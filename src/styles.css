@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.logo-plateform {
+    width: 108px;
+    margin-right: 4%;
+    margin-bottom: 0%;
+}
+
+.plateform-text {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.icon-btn-action {
+    margin-right: 5px;
+}
