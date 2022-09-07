@@ -1,9 +1,7 @@
-import { Flight } from './Flight';
+import { Flight } from "./Flight";
 
-export class Compagnie {
+export class Company {
     compagnieId: number;
     name: string;
     vols: Flight[];
-
-
 }

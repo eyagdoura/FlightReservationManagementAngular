@@ -5,4 +5,5 @@ export class Administrator {
     email_address: string;
     phone: string;
     password: string;
+    role: string = "ADMIN";
 }

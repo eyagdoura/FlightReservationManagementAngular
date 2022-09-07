@@ -5,5 +5,5 @@ export class Client {
     email_address: string;
     phone: string;
     password: string;
-    role: string;
+    role: string = "CLIENT";
 }

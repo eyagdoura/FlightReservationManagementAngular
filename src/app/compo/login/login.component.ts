@@ -1,3 +1,6 @@
+import { Router, RouterModule } from '@angular/router';
+import { Client } from './../../Models/client';
+import { UserService } from './../../services/user.service';
 import { Administrator } from './../../Models/administrator';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,11 +20,14 @@ export class LoginComponent implements OnInit {
   authBody: Auth = new Auth();
   user: User = new User();
   errorLogin: boolean;
-
+  admin: Administrator;
+  client: Client;
 
 
   constructor(private formBuilder: FormBuilder,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private userService: UserService,
+    private router: Router) {
     this.loginForm = this.formBuilder.group({
       email_address: ['', Validators.required],
       password: ['', Validators.required]
@@ -41,8 +47,12 @@ export class LoginComponent implements OnInit {
       if (data == null) {
         this.errorLogin = true;
       }
-      if (data.role == "ADMIN") {
-
+      else if (data.role == "ADMIN") {
+        localStorage.setItem('ADMIN', JSON.stringify(data));
+        this.router.navigate(['/createFlight']);
+      }
+      else if (data.role == "CLIENT") {
+        localStorage.setItem('CLIENT', JSON.stringify(data));
       }
     });
   }

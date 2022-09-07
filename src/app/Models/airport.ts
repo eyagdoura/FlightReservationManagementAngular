@@ -1,11 +1,8 @@
-import { Flight } from './Flight';
-
+import { Flight } from "./Flight";
 export class Airport {
     airportId: number;
     name: string;
     abbreviation: string;
     vols_dep: Flight[];
     vols_arri: Flight[];
-
-
 }
