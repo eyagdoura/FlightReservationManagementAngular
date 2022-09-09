@@ -14,13 +14,17 @@ import { LoginService } from './services/login.service';
 import { FlightFormComponent } from './compo/flight/flight-form/flight-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import { SearchBarComponent } from './compo/search/search-bar/search-bar.component';
+import { HomePageComponent } from './compo/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InscriptionComponent,
     LoginComponent,
-    FlightFormComponent
+    FlightFormComponent,
+    SearchBarComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ import { City } from './../../../Models/city';
 import { CountryService } from './../../../services/country.service';
 import { Country } from './../../../Models/country';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateButton } from 'angular-bootstrap-datetimepicker';
 import * as moment from 'moment';
 import { CompanyService } from 'src/app/services/company.service';
@@ -52,7 +52,7 @@ export class FlightFormComponent implements OnInit {
       countryDep: ['', Validators.required],
       cityDep: ['', Validators.required],
       airportDep: ['', Validators.required],
-      dateDep: ['', Validators.required],
+      dateDep: ['', [Validators.required, this.validateDate]],
       countryArriv: ['', Validators.required],
       cityArriv: ['', Validators.required],
       airportArriv: ['', Validators.required],
@@ -60,7 +60,40 @@ export class FlightFormComponent implements OnInit {
       company: ['', Validators.required],
       price: ['', [Validators.required, Validators.pattern("[0-9]{8}")]],
       numFlight: ['', Validators.required]
+    }, {
+      validator: this.validateDate('dateDep', 'dateArriv'),
     })
+  }
+
+  validateDate(controleDateDep: string, controleDateArriv: string) {
+    return (formGroup: FormGroup) => {
+      let dateDebControle = formGroup.controls[controleDateDep];
+      let dateArrivControle = formGroup.controls[controleDateArriv];
+      if (dateArrivControle.value != "" && dateArrivControle.value != null && dateArrivControle.value != undefined &&
+        dateDebControle.value != "" && dateDebControle.value != null && dateDebControle.value != undefined) {
+        console.log("malyen");
+        let hours = this.getNumberOfHours(dateArrivControle.value, dateDebControle.value);
+        if (hours <= 1 || hours > 12) {
+          dateDebControle.setErrors({ validateDate: true });
+          dateArrivControle.setErrors({ validateDate: true });
+        }
+        else {
+          dateDebControle.setErrors(null);
+          dateArrivControle.setErrors(null);
+        }
+      }
+      else {
+        console.log("feragh");
+      }
+    }
+  }
+
+  getNumberOfHours(dateDeb: Date, dateArriv: Date) {
+    let msBetweenDates = dateArriv.getTime() - dateDeb.getTime();
+    let seconds = Math.floor(msBetweenDates / 1000);
+    let minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    return hours;
   }
 
   ngOnInit(): void {
@@ -130,10 +163,16 @@ export class FlightFormComponent implements OnInit {
   }
 
   CreateVol() {
-    this.flight.administrator = this.userService.getAdminConnected();
-    this.FlightService.addNewFlight(this.flight).subscribe((data) => {
-      console.log("OK");
-    })
+    let msBetweenDates = this.flight.datearriv.getTime() - this.flight.datedep.getTime();
+    let seconds = Math.floor(msBetweenDates / 1000);
+    let minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+
+    console.log(msBetweenDates / 36000000);
+    // this.flight.administrator = this.userService.getAdminConnected();
+    // this.FlightService.addNewFlight(this.flight).subscribe((data) => {
+    //   console.log("OK");
+    // })
   }
 
 }
