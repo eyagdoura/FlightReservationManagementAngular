@@ -139,4 +139,10 @@
     .payment-form .card-details button {
         margin-top: 2em;
     }
+
+    .errorMessage {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+    }
 }

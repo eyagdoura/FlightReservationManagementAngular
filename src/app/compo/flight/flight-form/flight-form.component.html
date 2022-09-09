@@ -16,7 +16,8 @@
                 <div class="block-heading">
                 </div>
 
-                <form [formGroup]="createFlightForm">
+                <form [formGroup]="createFlightForm" (ngSubmit)="CreateVol()">
+
                     <!-- VOL DEPART FORM -->
                     <div class="card-details">
                         <h3 class="title">Vol départ</h3>
@@ -25,36 +26,59 @@
                                 <label for="card-holder">Pays départ</label>
                                 <ng-select class="form-control" formControlName="countryDep" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['countryDep'].errors }"
                                     (change)="getVilleByCountry($event,'DEPARTURE')" [items]="listCountriesDep">
                                 </ng-select>
+                                <div *ngIf="submitted && f['countryDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['countryDep'].errors['required']">the country of departure is required
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="card-holder">Ville départ </label>
                                 <ng-select class="form-control" formControlName="cityDep" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['cityDep'].errors }"
                                     (change)="getAirportByCity($event,'DEPARTURE')" [(ngModel)]="selectedCityDep">
                                     <ng-option [value]="city" *ngFor="let city of listCitiesDep">
                                         {{city.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['cityDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['cityDep'].errors['required']">departure city is required</div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for=""> Aéroport départ</label>
                                 <ng-select class="form-control" formControlName="airportDep" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
-                                    [(ngModel)]="flight.airportDep">
+                                    [ngClass]="{ 'is-invalid': submitted && f['airportDep'].errors }"
+                                    [(ngModel)]="selectedAirportDep" (change)="selectAirport($event,'DEPARTURE')">
                                     <ng-option [value]="airport" *ngFor="let airport of listAirportsDep">
                                         {{airport.name}}
                                     </ng-option>
+
                                 </ng-select>
+                                <div *ngIf="submitted && f['airportDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['airportDep'].errors['required']">Departure airport is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="card-number">Date départ</label>
                                 <p *ngIf="selectedDateDep != ''">La date du vol de départ est le {{selectedDateDep}}</p>
                                 <dl-date-time-picker [selectFilter]="startDatePickerFilter" class="form-control"
-                                    formControlName="dateDep" startView="day" maxView="month" minView="minute"
-                                    [(ngModel)]="flight.datedep" (change)="selectDate($event,'DEPARTURE')">
+                                    formControlName="dateDep" startView="month" maxView="year" minView="minute"
+                                    [(ngModel)]="flight.datedep" (change)="selectDate($event,'DEPARTURE')"
+                                    [ngClass]="{ 'is-invalid': submitted && f['dateDep'].errors }">
                                 </dl-date-time-picker>
+                                <div *ngIf="submitted && f['dateDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['dateDep'].errors['required']">Departure date is required</div>
+                                    <div *ngIf="f['dateDep'].errors['validateDate']">Vérifiez les dates: minimum 1h et
+                                        maximum 12h de vol
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,37 +91,62 @@
                                 <label for="card-holder">Pays arrivé</label>
                                 <ng-select class="form-control" formControlName="countryArriv" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['countryArriv'].errors }"
                                     (change)="getVilleByCountry($event,'ARRIVAL')" [items]="listCountriesArriv">
                                 </ng-select>
+                                <div *ngIf="submitted && f['countryArriv'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['countryArriv'].errors['required']">the country of arrival is
+                                        required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="card-holder">Ville Arrivé </label>
                                 <ng-select class="form-control" formControlName="cityArriv" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['cityArriv'].errors }"
                                     (change)="getAirportByCity($event,'ARRIVAL')" [(ngModel)]="selectedCityArriv">
                                     <ng-option [value]="city" *ngFor="let city of listCitiesArriv">
                                         {{city.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['cityArriv'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['cityArriv'].errors['required']">the city of arrival is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for=""> Aéroport Arrivé</label>
                                 <ng-select class="form-control" formControlName="airportArriv" bindLabel="name"
                                     appendTo="body" [searchable]="true" [clearable]="true"
-                                    [(ngModel)]="flight.airportArriv">
+                                    [ngClass]="{ 'is-invalid': submitted && f['airportArriv'].errors }"
+                                    [(ngModel)]="selectedAirportArriv" (change)="selectAirport($event,'ARRIVAL')">
                                     <ng-option [value]="airport" *ngFor="let airport of listAirportsArriv">
                                         {{airport.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['airportArriv'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['airportArriv'].errors['required']">arrival airport is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="card-number">Date arrivé</label>
-                                <p *ngIf="selectedDateArriv != ''">La date du vol d'arrivé est le {{selectedDateArriv}}
+                                <p *ngIf="selectedDateArriv != ''">La date du vol d'arrivé est le
+                                    {{selectedDateArriv}}
                                 </p>
                                 <dl-date-time-picker [selectFilter]="startDatePickerFilter" class="form-control"
-                                    formControlName="dateArriv" startView="day" maxView="month" minView="minute"
+                                    formControlName="dateArriv" startView="month" maxView="year" minView="minute"
+                                    [ngClass]="{ 'is-invalid': submitted && f['dateArriv'].errors }"
                                     [(ngModel)]="flight.datearriv" (change)="selectDate($event,'ARRIVAL')">
                                 </dl-date-time-picker>
+                                <div *ngIf="submitted && f['dateArriv'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['dateArriv'].errors['required']">arrival date is required
+                                    </div>
+                                    <div *ngIf="f['dateArriv'].errors['validateDate']">Vérifiez les dates: minimum 1h et
+                                        maximum 12h de vol
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,25 +164,36 @@
                             <div class="form-group col-sm-6">
                                 <label for="card-holder">Prix</label>
                                 <input type="text" class="form-control" formControlName="price" placeholder="Prix Vol"
+                                    [ngClass]="{ 'is-invalid': submitted && f['price'].errors }"
                                     [(ngModel)]="flight.price">
+                                <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['price'].errors['required']">price is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="">Companie</label>
                                 <ng-select class="form-control" formControlName="company" bindLabel="name"
-                                    appendTo="body" [searchable]="true" [clearable]="true" [(ngModel)]="flight.company">
+                                    appendTo="body" [searchable]="true" [clearable]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['company'].errors }"
+                                    [(ngModel)]="flight.company">
                                     <ng-option [value]="comp" *ngFor="let comp of listCompagnies">
                                         <img src="./assets/companiesLogo/{{comp.name}}.png" width="25px"
                                             height="25px" />
                                         {{comp.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['company'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['company'].errors['required']">Company is required
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group col-sm-12">
-                        <button type="button" class="btn btn-primary btn-block" (click)="CreateVol()">Créer un
-                            vol</button>
+                        <div class="form-group col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-block" (click)="CreateVol()">Créer un
+                                vol</button>
+                        </div>
                     </div>
                 </form>
             </div>
