@@ -25,6 +25,7 @@ export class FlightFormComponent implements OnInit {
   listCountriesDep: Country[];
   listCitiesDep: City[];
   listAirportsDep: Airport[];
+  selectedAirportDep: any;
   selectedCityDep: any;
   selectedDateDep: string = "";
 
@@ -33,6 +34,7 @@ export class FlightFormComponent implements OnInit {
   listCitiesArriv: City[];
   selectedCityArriv: any;
   listAirportsArriv: Airport[];
+  selectedAirportArriv: any;
   selectedDateArriv: string = "";
 
   listCompagnies: Company[];
@@ -40,6 +42,9 @@ export class FlightFormComponent implements OnInit {
   flight: Flight = new Flight();
   company: Company;
   createFlightForm: FormGroup;
+  submitted = false;
+  diffDate: Date;
+  errorDate: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private countryService: CountryService,
@@ -58,9 +63,42 @@ export class FlightFormComponent implements OnInit {
       airportArriv: ['', Validators.required],
       dateArriv: ['', Validators.required],
       company: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern("[0-9]{8}")]],
+      price: ['', [Validators.required, Validators.pattern("[0-9]*")]],
       numFlight: ['', Validators.required]
+    }, {
+      validator: this.validateDate('dateDep', 'dateArriv'),
     })
+  }
+  get f() { return this.createFlightForm.controls; }
+
+  //Vérification de nombre d'heures entre la date de départ et la date d'arrivé
+  validateDate(controleDateDep: string, controleDateArriv: string) {
+    return (formGroup: FormGroup) => {
+      let dateDebControle = formGroup.controls[controleDateDep];
+      let dateArrivControle = formGroup.controls[controleDateArriv];
+
+      if (dateArrivControle.value != "" && dateArrivControle.value != null && dateArrivControle.value != undefined &&
+        dateDebControle.value != "" && dateDebControle.value != null && dateDebControle.value != undefined) {
+        let hours = this.getNumberOfHours(dateArrivControle.value, dateDebControle.value);
+        if (hours <= 1 || hours > 12) {
+          dateDebControle.setErrors({ validateDate: true });
+          dateArrivControle.setErrors({ validateDate: true });
+        }
+        else {
+          dateDebControle.setErrors(null);
+          dateArrivControle.setErrors(null);
+        }
+      }
+    }
+  }
+
+  //Permet de calculer le nombre d'heure entre deux date
+  getNumberOfHours(dateArriv: Date, dateDeb: Date) {
+    let msBetweenDates = dateArriv.getTime() - dateDeb.getTime();
+    let seconds = Math.floor(msBetweenDates / 1000);
+    let minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    return hours;
   }
 
   ngOnInit(): void {
@@ -84,17 +122,16 @@ export class FlightFormComponent implements OnInit {
   }
 
   getVilleByCountry(country: Country, typeVol: string) {
-    console.log(typeVol);
     this.cityService.getCitiesByCountry(country.id).subscribe((cities) => {
       if (typeVol == "DEPARTURE") {
         this.listCitiesDep = cities;
         this.selectedCityDep = "";
-        this.flight.airportDep = new Airport();
+        this.selectedAirportDep = "";
       } else if (typeVol == "ARRIVAL") {
         this.listCitiesArriv = cities;
         this.listCitiesArriv = this.listCitiesArriv.filter(c => c.cityId != this.selectedCityDep.cityId);
         this.selectedCityArriv = "";
-        this.flight.airportArriv = new Airport();
+        this.selectedAirportArriv = "";
       }
     })
   }
@@ -119,21 +156,34 @@ export class FlightFormComponent implements OnInit {
 
   selectDate(event: any, typeVol: string) {
     if (typeVol == "DEPARTURE") {
+
       this.selectedDateDep = event?._value?.toLocaleString();
     } else if (typeVol == "ARRIVAL") {
       this.selectedDateArriv = event?._value?.toLocaleString();
     }
   }
 
+  selectAirport(event: any, typeVol: string) {
+    if (typeVol == "DEPARTURE") {
+      this.flight.airportDep = event;
+      this.selectedAirportDep = event;
+    } else if (typeVol == "ARRIVAL") {
+      this.flight.airportArriv = event;
+      this.selectedAirportArriv = event;
+    }
+  }
+
+  //les dates ne peut etre séléctionner qu'à partir du mois prochains
   public startDatePickerFilter(dateButton: DateButton, viewName: string): boolean {
-    return dateButton.value >= moment().startOf(viewName as moment.unitOfTime.StartOf).valueOf();
+    return dateButton.value >= moment().add(1, 'M').startOf('month').valueOf();
   }
 
   CreateVol() {
-    this.flight.administrator = this.userService.getAdminConnected();
-    this.FlightService.addNewFlight(this.flight).subscribe((data) => {
-      console.log("OK");
-    })
+    this.submitted = true;
+    if (this.createFlightForm.valid) {
+      this.FlightService.addNewFlight(this.flight).subscribe((data) => {
+        alert("Vol créer avec succés");
+      })
+    }
   }
-
 }
