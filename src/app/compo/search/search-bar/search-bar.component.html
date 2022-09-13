@@ -14,7 +14,7 @@
         <section class="payment-form dark search-bar">
             <div class="container">
                 <div class="block-heading">
-				<h1>Votre voyage commence maintenant</h1>
+                    <h1>Votre voyage commence maintenant</h1>
                 </div>
 
                 <form [formGroup]="createFlightForm">
@@ -24,38 +24,58 @@
                         <div class="row">
                             <div class="form-group col-sm-4">
                                 <label for="card-holder">Aéroport départ </label>
-                                <ng-select class="form-control" formControlName="cityDep" bindLabel="name"
-                                    appendTo="body" [searchable]="true" [clearable]="true">
-                                    <ng-option [value]="airport" *ngFor="let airport of items">
+                                <ng-select class="form-control" formControlName="airportDep" bindLabel="name"
+                                    appendTo="body" [searchable]="true" [clearable]="true"
+                                    [(ngModel)]="filter.airportDep" (change)="selectAirport($event)"
+                                    [ngClass]="{ 'is-invalid': submitted && f['airportDep'].errors }">
+                                    <ng-option [value]="airport" *ngFor="let airport of listAirportsDep">
                                         {{airport.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['airportDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['airportDep'].errors['required']">Departure airport is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="card-holder"> Aéroport Arrivé</label>
-                                <ng-select class="form-control" formControlName="airportDep" bindLabel="name"
-                                    appendTo="body" [searchable]="true" [clearable]="true">
-                                    <ng-option [value]="airport" *ngFor="let airport of items">
+                                <ng-select class="form-control" formControlName="airportArriv" bindLabel="name"
+                                    appendTo="body" [searchable]="true" [clearable]="true"
+                                    [(ngModel)]="filter.airportArriv"
+                                    [ngClass]="{ 'is-invalid': submitted && f['airportArriv'].errors }">
+                                    <ng-option [value]="airport" *ngFor="let airport of listAirportsArriv">
                                         {{airport.name}}
                                     </ng-option>
                                 </ng-select>
+                                <div *ngIf="submitted && f['airportArriv'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['airportArriv'].errors['required']">arrival airport is required
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="card-number">Départ</label>
-                                 <ng-select class="form-control" formControlName="airportDep" bindLabel="name"
-                                    appendTo="body" [searchable]="true" [clearable]="true">
-                                    <ng-option [value]="airport" *ngFor="let airport of items">
-                                        {{airport.name}}
-                                    </ng-option>
-                                </ng-select>
+                                <input type="date" class="form-control" min={{currentDate}} formControlName="dateDep"
+                                    [(ngModel)]="filter.dateDep"
+                                    [ngClass]="{ 'is-invalid': submitted && f['dateDep'].errors }">
+                                <div *ngIf="submitted && f['dateDep'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['dateDep'].errors['required']">Departure date is required</div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary btn-block btn-search" (click)="CreateVol()">Trouver un
+                        <button type="button" class="btn btn-primary btn-block btn-search" (click)="CreateVol()">Trouver
+                            un
                             vol
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="width:1.5rem;height:1.5rem;vertical-align: bottom;" class="BpkIcon_bpk-icon--rtl-support__Y2U3N" fill="rgb(255, 255, 255)"><path d="M11.293 19.713a1 1 0 0 0 1.414 0l7-7a1 1 0 0 0 0-1.414l-7-7a1 1 0 0 0-1.438 1.39l.024.024 5.293 5.293H5a1 1 0 0 0 0 2h11.586L11.293 18.3a1 1 0 0 0 0 1.414z"></path></svg>
-							</button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                style="width:1.5rem;height:1.5rem;vertical-align: bottom;"
+                                class="BpkIcon_bpk-icon--rtl-support__Y2U3N" fill="rgb(255, 255, 255)">
+                                <path
+                                    d="M11.293 19.713a1 1 0 0 0 1.414 0l7-7a1 1 0 0 0 0-1.414l-7-7a1 1 0 0 0-1.438 1.39l.024.024 5.293 5.293H5a1 1 0 0 0 0 2h11.586L11.293 18.3a1 1 0 0 0 0 1.414z">
+                                </path>
+                            </svg>
+                        </button>
                     </div>
                 </form>
             </div>

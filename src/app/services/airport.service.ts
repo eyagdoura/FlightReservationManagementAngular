@@ -24,6 +24,15 @@ export class AirportService {
         catchError(this.errorHandler)
       )
   }
+
+
+  getAllAirports(): Observable<Airport[]> {
+    return this.httpClient.get<Airport[]>(environment.API_URL + "Airport/getAllAirports", this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+
+  }
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

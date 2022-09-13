@@ -57,7 +57,7 @@ export class FlightFormComponent implements OnInit {
       countryDep: ['', Validators.required],
       cityDep: ['', Validators.required],
       airportDep: ['', Validators.required],
-      dateDep: ['', [Validators.required, this.validateDate]],
+      dateDep: ['', Validators.required],
       countryArriv: ['', Validators.required],
       cityArriv: ['', Validators.required],
       airportArriv: ['', Validators.required],
@@ -156,7 +156,6 @@ export class FlightFormComponent implements OnInit {
 
   selectDate(event: any, typeVol: string) {
     if (typeVol == "DEPARTURE") {
-
       this.selectedDateDep = event?._value?.toLocaleString();
     } else if (typeVol == "ARRIVAL") {
       this.selectedDateArriv = event?._value?.toLocaleString();
@@ -174,8 +173,8 @@ export class FlightFormComponent implements OnInit {
   }
 
   //les dates ne peut etre séléctionner qu'à partir du mois prochains
-  public startDatePickerFilter(dateButton: DateButton, viewName: string): boolean {
-    return dateButton.value >= moment().add(1, 'M').startOf('month').valueOf();
+  public startDatePickerFilter(dateButton: DateButton) {
+    return dateButton.value <= moment().add(1, 'M').startOf('month').valueOf();
   }
 
   CreateVol() {
