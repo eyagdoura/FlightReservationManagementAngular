@@ -7,12 +7,15 @@ import { City } from './../../../Models/city';
 import { CountryService } from './../../../services/country.service';
 import { Country } from './../../../Models/country';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateButton } from 'angular-bootstrap-datetimepicker';
 import * as moment from 'moment';
 import { CompanyService } from 'src/app/services/company.service';
 import { Company } from 'src/app/Models/company';
 import { Flight } from 'src/app/Models/Flight';
+import * as _moment from 'moment';
+import { unitOfTime } from 'moment';
+
 
 @Component({
   selector: 'app-flight-form',
@@ -43,8 +46,8 @@ export class FlightFormComponent implements OnInit {
   company: Company;
   createFlightForm: FormGroup;
   submitted = false;
-  diffDate: Date;
   errorDate: boolean;
+
 
   constructor(private formBuilder: FormBuilder,
     private countryService: CountryService,
@@ -70,6 +73,10 @@ export class FlightFormComponent implements OnInit {
     })
   }
   get f() { return this.createFlightForm.controls; }
+  ngOnInit(): void {
+    this.getAllCountries();
+    this.getAllCompagnies();
+  }
 
   //Vérification de nombre d'heures entre la date de départ et la date d'arrivé
   validateDate(controleDateDep: string, controleDateArriv: string) {
@@ -94,16 +101,12 @@ export class FlightFormComponent implements OnInit {
 
   //Permet de calculer le nombre d'heure entre deux date
   getNumberOfHours(dateArriv: Date, dateDeb: Date) {
+
     let msBetweenDates = dateArriv.getTime() - dateDeb.getTime();
     let seconds = Math.floor(msBetweenDates / 1000);
     let minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     return hours;
-  }
-
-  ngOnInit(): void {
-    this.getAllCountries();
-    this.getAllCompagnies();
   }
 
   getAllCompagnies() {
@@ -157,8 +160,11 @@ export class FlightFormComponent implements OnInit {
   selectDate(event: any, typeVol: string) {
     if (typeVol == "DEPARTURE") {
       this.selectedDateDep = event?._value?.toLocaleString();
+      this.flight.datedep = this.resolveUtcDateTime(this.flight.datedep);
+
     } else if (typeVol == "ARRIVAL") {
       this.selectedDateArriv = event?._value?.toLocaleString();
+      this.flight.datearriv = this.resolveUtcDateTime(this.flight.datearriv);
     }
   }
 
@@ -173,16 +179,30 @@ export class FlightFormComponent implements OnInit {
   }
 
   //les dates ne peut etre séléctionner qu'à partir du mois prochains
-  public startDatePickerFilter(dateButton: DateButton) {
-    return dateButton.value <= moment().add(1, 'M').startOf('month').valueOf();
+  public startDatePickerFilter(dateButton: DateButton, viewName: string): boolean {
+    return dateButton.value >= moment().add(1, 'M').startOf(viewName as unitOfTime.StartOf).valueOf();
+  }
+
+  resolveUtcDateTime(date: Date) {
+    let hoursDiff = date.getHours() - date.getTimezoneOffset() / 60;
+    date.setHours(hoursDiff);
+    return date;
   }
 
   CreateVol() {
     this.submitted = true;
     if (this.createFlightForm.valid) {
+      this.flight.administrator = this.userService.getAdminConnected();
+      console.log(JSON.stringify(this.flight));
       this.FlightService.addNewFlight(this.flight).subscribe((data) => {
-        alert("Vol créer avec succés");
+        if (data != null) {
+          alert("Vol créer avec succés");
+          this.createFlightForm.reset();
+          this.submitted = false;
+        }
       })
+
+
     }
   }
 }

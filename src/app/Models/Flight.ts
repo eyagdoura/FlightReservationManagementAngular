@@ -14,4 +14,7 @@ export class Flight {
     reservation: Reservation[];
     administrator: Administrator;
     company: Company;
+    duration: string;
+    bagCost: number;
+    seat: number;
 }

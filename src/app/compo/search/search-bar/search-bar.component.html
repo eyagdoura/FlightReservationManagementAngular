@@ -17,7 +17,7 @@
                     <h1>Votre voyage commence maintenant</h1>
                 </div>
 
-                <form [formGroup]="createFlightForm">
+                <form [formGroup]="searchBarForm">
                     <!-- VOL DEPART FORM -->
                     <div class="card-details">
                         <!-- <h3 class="title">Vol départ</h3> -->
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary btn-block btn-search" (click)="CreateVol()">Trouver
+                        <button type="button" class="btn btn-primary btn-block btn-search" (click)="search()">Trouver
                             un
                             vol
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -77,11 +77,15 @@
                             </svg>
                         </button>
                     </div>
+
                 </form>
             </div>
         </section>
     </main>
+    <app-home-page *ngIf="showHomePage"></app-home-page>
+    <app-search-list-flight *ngIf="showListFlightPage" [listFlights]="listFlights"></app-search-list-flight>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 

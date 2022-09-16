@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
       }
       else if (data.role == "CLIENT") {
         localStorage.setItem('CLIENT', JSON.stringify(data));
+        this.router.navigate(['']);
       }
     });
   }
