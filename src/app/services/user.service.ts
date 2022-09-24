@@ -9,7 +9,12 @@ export class UserService {
 
 
   public getAdminConnected(): Administrator {
-    return JSON.parse(localStorage.getItem("ADMIN") || '{}');
+    //@ts-ignore
+    return JSON.parse(localStorage.getItem("ADMIN"));
+  }
+  public getClientConnected(): Client {
+    //@ts-ignore
+    return JSON.parse(localStorage.getItem("CLIENT"));
   }
 
   public setClientConnected(client: Client) {

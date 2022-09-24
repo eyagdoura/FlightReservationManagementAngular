@@ -16,13 +16,13 @@ export class FlightService {
       'Content-Type': 'application/json'
     })
   }
-  private listFlights: Flight[] = [];
+  private flight: Flight;
 
-  getListFlights() {
-    return this.listFlights;
+  getSelectedFlight() {
+    return this.flight;
   }
-  setListFlights(listFlights: Flight[]) {
-    this.listFlights = listFlights;
+  setSelectedFlight(flight: Flight) {
+    this.flight = flight;
   }
 
   constructor(private httpClient: HttpClient) { }

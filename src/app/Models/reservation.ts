@@ -1,3 +1,4 @@
+import { Passager } from './passager';
 import { Flight } from './Flight';
 import { Client } from './client';
 export class Reservation {
@@ -5,5 +6,7 @@ export class Reservation {
     dateReservation: Date;
     etatReservation: string;
     client: Client;
-    Vol: Flight;
+    passager: Passager;
+    flight: Flight;
+    numReservation: string;
 }

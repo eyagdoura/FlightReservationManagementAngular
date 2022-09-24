@@ -17,7 +17,6 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import { SearchBarComponent } from './compo/search/search-bar/search-bar.component';
 import { HomePageComponent } from './compo/home-page/home-page.component';
 import { SearchListFlightComponent } from './compo/search/search-list-flight/search-list-flight.component';
-import { ReservationComponent } from './compo/reservation/reservation.component';
 import { ReservationFormComponent } from './compo/reservation/reservation-form/reservation-form.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { ReservationFormComponent } from './compo/reservation/reservation-form/r
     SearchBarComponent,
     HomePageComponent,
     SearchListFlightComponent,
-    ReservationComponent,
     ReservationFormComponent,
   ],
   imports: [

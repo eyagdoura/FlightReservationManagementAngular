@@ -1,1 +1,721 @@
-<p>reservation-form works!</p>
+<html>
+
+<body>
+    <div class="sc-AxmLO sc-fzozJi IiTRs">
+        <div class="sc-AxmLO sc-fzozJi sc-fzoKki gCyWKW">
+            <div class="sc-AxmLO sc-fzozJi sc-fzoKki gCyWKW">
+                <div class="sc-fzqARJ imDHzu">
+
+                    <div class="sc-AxmLO ftxzzg">
+
+                        <div class="sc-AxmLO sc-fzoiQi eEMfeS">
+
+                            <!-- <div class="sc-AxmLO sc-fzozJi sc-fzoKki gCyWKW"> -->
+
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="sc-AxmLO cPSpJy">
+                                        <div class="sc-AxmLO sc-fzozJi cqLxmt">
+                                            <h1 class="sc-AxjAm fjduYK">Votre vol</h1>
+                                        </div>
+                                        <div class="sc-fzpdbB bdKsOL">
+                                            <div class="sc-fzoPby ecNdqH">
+                                                <div class="sc-fzoXzr fxORek"></div>
+                                                <div class="sc-AxmLO sc-fzozJi cRtZnR">
+                                                    <div class="sc-AxmLO sc-fzozJi iHZHav">
+                                                        <h3 class="sc-AxiKw dxHPoM">Récapitulatif du vol</h3><span
+                                                            data-gf-id="textlink-flightdetails"
+                                                            data-gtm-id="textlink-flightdetails"
+                                                            class="sc-fzqBkg sc-fzoydu sc-fzoYHE kERYZo"></span>
+                                                    </div>
+                                                    <div class="sc-fzoXzr fxORek"></div>
+                                                    <div class="sc-AxmLO sc-fzozJi ebqwCE">
+                                                        <div class="sc-AxmLO sc-fzozJi jWemNr">
+                                                            <div class="sc-AxmLO sc-fzozJi iPYVVU">
+                                                                <div class="sc-AxmLO sc-fzozJi dqgyEC"><img
+                                                                        src="./assets/companiesLogo/{{flight.company.name}}.png"
+                                                                        class="sc-oTmZL gdlsIH">
+                                                                </div>
+                                                            </div>
+                                                            <div class="sc-AxmLO sc-fzozJi iroIbA">
+                                                                <div class="sc-AxmLO sc-fzozJi kwKWrU">
+                                                                    <p class="sc-fznyAO yplly">Aller</p>
+                                                                    <p class="sc-fznyAO gVNCRl">ven. 23 sept. 2022
+                                                                    </p>
+                                                                </div>
+                                                                <div class="sc-AxmLO sc-fzozJi jXsQuw">
+                                                                    <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                        <div class="sc-AxmLO sc-fzozJi cRtZnR">
+                                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                                <p class="sc-fznyAO gVpbyP">
+                                                                                    {{flight.datedep | date:
+                                                                                    "HH:mm"}}
+                                                                                </p><span
+                                                                                    class="sc-fznyAO lhaAnP">{{flight.airportDep.abbreviation}}</span>
+                                                                            </div>
+                                                                            <div class="sc-AxmLO dOfmVl">
+                                                                                <p class="sc-fznyAO cEtsOO">
+                                                                                    {{flight.airportDep.city.name}}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-AxmLO kKinxH">
+                                                                            <div class="sc-pJkiN eCmdAR"></div>
+                                                                        </div>
+                                                                        <div class="sc-AxmLO sc-fzozJi cRtZnR">
+                                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                                <p class="sc-fznyAO gVpbyP">
+                                                                                    {{flight.datearriv | date:
+                                                                                    "HH:mm"}}
+                                                                                </p><span
+                                                                                    class="sc-fznyAO lhaAnP">{{flight.airportArriv.abbreviation}}</span>
+                                                                                <div class="sc-AxmLO sc-fzozJi kkPAQa">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-AxmLO dOfmVl">
+                                                                                <p class="sc-fznyAO cEtsOO">
+
+                                                                                    {{flight.airportArriv.city.name}}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="sc-AxmLO sc-fzozJi eSnnqf"
+                                                                    style="margin-left: 22%;margin-bottom: 4%;margin-top: -3%;">
+                                                                    <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                        <p class="sc-fznyAO eSxlan">
+                                                                            {{flight.duration}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sc-AxmLO qNiSW">
+                                                            <div class="sc-fzqKxP bXOPpy">
+                                                                <div class="sc-AxmLO sc-fzozJi dOlBzl"><svg
+                                                                        viewBox="0 0 30 21">
+                                                                        <use
+                                                                            xlink:href="#https://assets.travix.com/assets/suitcase-ba495978.svg">
+                                                                        </use>
+                                                                    </svg></div>
+                                                                <p class="sc-fznyAO eSxlan">Votre vol inclut un
+                                                                    maximum de 1
+                                                                    bagage(s) en
+                                                                    soute.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="sc-fzoXzr fxORek"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="sc-AxmLO klpDuS">
+                                        <div class="sc-fzqMAW leyCrB">
+                                            <div class="sc-AxmLO sc-fzozJi cqLxmt">
+                                                <h1 class="sc-AxjAm fjduYK">Votre réservation</h1>
+                                            </div>
+                                            <div class="sc-fzpdbB VRlAx">
+                                                <div class="sc-fzoPby ecNdqH">
+                                                    <div class="sc-AxmLO sc-fzozJi iuNeAN">
+                                                        <div class="sc-fznKkj jZQYrd">
+                                                            <div class="sc-AxmLO sc-fzozJi ksfjIy">
+                                                                <div data-gf-id="csti-cost-type"
+                                                                    class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                    <div class="sc-AxmLO sc-fzozJi gPeLrp"><span
+                                                                            class="sc-fznyAO gbVuMb">{{passagerList.length}}</span>
+                                                                    </div>
+                                                                    <span class="sc-fznyAO gufxTg">Adultes</span>
+                                                                </div>
+                                                                <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                    <p class="sc-fznyAO fDnUoO">{{flight.price}} TND
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sc-fznKkj jZQYrd">
+                                                            <div class="sc-AxmLO sc-fzozJi ksfjIy">
+                                                                <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                    <div class="sc-AxmLO sc-fzozJi gPeLrp"><span
+                                                                            class="sc-fznyAO gbVuMb">{{passagerList.length}}</span>
+                                                                    </div>
+                                                                    <span class="sc-fznyAO gufxTg">Bagages en
+                                                                        soute</span>
+                                                                </div>
+                                                                <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                    <p class="sc-fznyAO eSxlan">Inclus</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sc-fznKkj ixQaxp">
+                                                            <div class="sc-fznKkj gbUILL">
+                                                                <div class="sc-fznKkj bscOFQ"><svg height="16"
+                                                                        viewBox="0 0 20 20" width="16"
+                                                                        class="sc-fznZeY cLlitC">
+                                                                        <use
+                                                                            xlink:href="#https://assets.travix.com/assets/check-566fca98.svg">
+                                                                        </use>
+                                                                    </svg></div>
+                                                                <div class="sc-fznKkj dgURSw">
+                                                                    <div class="sc-fznKkj hncImI"><span
+                                                                            class="sc-fznyAO bhtucc">Bagages de
+                                                                            cabine</span>
+                                                                        <p class="sc-fznyAO bhtucc">Gratuit</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="sc-fzoXzr fxORek"></div>
+                                                    <div class="sc-AxmLO sc-fzozJi hUowGk">
+                                                        <div class="sc-AxmLO sc-fzozJi ksfjIy">
+                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf"><span
+                                                                    class="sc-fznyAO gufxTg">les frais de
+                                                                    réservation de
+                                                                    vol</span></div>
+                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                <p class="sc-fznyAO fDnUoO">10 TND</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="sc-AxmLO sc-fzozJi ksfjIy">
+                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf"><span
+                                                                    class="sc-fznyAO gufxTg">Remise frais de
+                                                                    paiement
+                                                                    BudgetAir</span></div>
+                                                            <div class="sc-AxmLO sc-fzozJi ehCZbf">
+                                                                <p class="sc-fznyAO bhtucc">Gratuit</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sc-AxmLO sc-fzozJi bnpbUg"><span
+                                                            class="sc-fznyAO elRzkz">Total</span><span
+                                                            data-gf-id="cst-total-price" class="sc-fzoOEf cKvicq"><span
+                                                                class="sc-fznBMq dbpfvr"><span
+                                                                    class="sc-fzppip knKlXk"><span
+                                                                        class="sc-fzpdyU dEDRcl">TND</span>
+                                                                    <div *ngIf="passagerList.length == 0"
+                                                                        class="sc-AxmLO sc-fzozJi KWQxn"><span
+                                                                            class="sc-fzpdyU bMtBwF">{{flight.price
+                                                                            + 10}}</span>
+                                                                    </div>
+                                                                    <div *ngIf="passagerList.length > 0"
+                                                                        class="sc-AxmLO sc-fzozJi KWQxn"><span
+                                                                            class="sc-fzpdyU bMtBwF">{{totalPrice +
+                                                                            10}}</span>
+                                                                    </div>
+                                                                </span></span></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sc-AxmLO hFqiAU">
+
+                                <!----------------AFFICHER LES PASSAGER AJOUTE------------------->
+                                <div *ngIf="showDivPassagerList">
+                                    <div class="sc-AxmLO sc-fzozJi cqLxmt">
+                                        <h1 class="sc-AxjAm fjduYK">Vos Passagers</h1>
+                                    </div>
+
+                                    <div>
+                                        <div class="sc-AxmLO bPanSu">
+                                            <div class="sc-fzqOul gatuqC">
+                                                <div class="sc-fzqzEs ejSgoq">
+                                                    <div class="sc-fznKkj YItmq"><svg height="20" viewBox="0 0 20 20"
+                                                            width="20" class="sc-fznZeY bhToPH">
+                                                            <use
+                                                                xlink:href="#https://assets.travix.com/assets/passenger-091698e5.svg">
+                                                            </use>
+                                                        </svg>
+                                                        <div class="sc-fznKkj fXNGmD">
+                                                            <p class="sc-fznyAO cpuVRI">{{passagerList.length}}
+                                                                Passagers</p>
+                                                            <p class="sc-fznyAO fuoWjQ">Adulte (12 ans et +)</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="sc-fzoXzr fxORek"></div>
+                                                    <div class="sc-AxmLO sc-fzozJi jJNgjT">
+                                                        <div class="sc-AxmLO sc-fzoiQi jpcuP">
+                                                            <div class="sc-AxmLO jFepqJ">
+                                                                <div *ngFor="let passager of passagerList">
+                                                                    <div class="sc-AxmLO sc-fzozJi sc-fzowVh kXxULe">
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-fznKkj cQxAsH"><label
+                                                                                        class="sc-fznLPX ihgchQ">Nom</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-pZOBi daYFJP"><input
+                                                                                    placeholder="Tel qu’il figure sur le Nom"
+                                                                                    readonly type="text"
+                                                                                    class="sc-pJUVA ghIxEK"
+                                                                                    value="{{passager.first_name}}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-fznKkj cQxAsH"><label
+                                                                                        class="sc-fznLPX ihgchQ">Prénom</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-pZOBi daYFJP"><input
+                                                                                    placeholder="Tel qu’il figure sur le passeport"
+                                                                                    readonly type="text"
+                                                                                    class="sc-pJUVA ghIxEK"
+                                                                                    value="{{passager.last_name}}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-fznKkj cQxAsH"><label
+                                                                                        for="passengers[0]firstName"
+                                                                                        class="sc-fznLPX ihgchQ">Date
+                                                                                        de
+                                                                                        naissance</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-pZOBi daYFJP"><input
+                                                                                    placeholder="Tel qu’il figure sur le passeport"
+                                                                                    readonly type="text"
+                                                                                    class="sc-pJUVA ghIxEK"
+                                                                                    value="{{passager.Date_of_Birth}}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-fznKkj cQxAsH"><label
+                                                                                        for="passengers[0]firstName"
+                                                                                        class="sc-fznLPX ihgchQ">Numéro
+                                                                                        Passeport</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-pZOBi daYFJP"><input
+                                                                                    placeholder="Tel qu’il figure sur le passeport"
+                                                                                    readonly type="text"
+                                                                                    class="sc-pJUVA ghIxEK"
+                                                                                    value="{{passager.num_passport}}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-pZOBi daYFJP"><button
+                                                                                    (click)="removePassagerFromList(passager)"
+                                                                                    style="margin-top: 20%;height: 59%;margin-left: 8%;"
+                                                                                    type="button"
+                                                                                    class="btn btn-outline-danger">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="18" height="18"
+                                                                                        fill="currentColor"
+                                                                                        class="bi bi-person-x-fill"
+                                                                                        viewBox="0 0 16 16">
+                                                                                        <path fill-rule="evenodd"
+                                                                                            d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z">
+                                                                                        </path>
+                                                                                    </svg>
+                                                                                    Supprimer
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sc-AxmLO sc-fzozJi cqLxmt">
+                                    <h1 class="sc-AxjAm fjduYK">Vos infos</h1>
+                                </div>
+
+                                <div>
+                                    <div class="sc-AxmLO bPanSu">
+                                        <div class="sc-fzqOul gatuqC">
+                                            <div class="sc-fzqzEs ejSgoq">
+                                                <div class="sc-fznKkj YItmq"><svg height="20" viewBox="0 0 20 20"
+                                                        width="20" class="sc-fznZeY bhToPH">
+                                                        <use
+                                                            xlink:href="#https://assets.travix.com/assets/passenger-091698e5.svg">
+                                                        </use>
+                                                    </svg>
+                                                    <div class="sc-fznKkj fXNGmD">
+                                                        <p class="sc-fznyAO cpuVRI">
+                                                            Passager {{passagerList.length+1}}
+                                                        </p>
+                                                        <p class="sc-fznyAO fuoWjQ">Adulte (12 ans et +)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="sc-fzoXzr fxORek"></div>
+                                                <div class="sc-AxmLO sc-fzozJi jJNgjT">
+                                                    <div class="sc-AxmLO sc-fzoiQi jpcuP">
+                                                        <form [formGroup]="passagerForm" (ngSubmit)="addPassager()">
+                                                            <div class="sc-AxmLO izcPCi">
+                                                                <div class="sc-fzqKxP bXOPpy">
+                                                                    <div class="sc-AxmLO fGmcRs">
+                                                                        <p class="sc-fznyAO hiPWIs">Vérifiez vos
+                                                                            renseignements
+                                                                            personnels.</p>
+                                                                        <div class="sc-AxmLO sc-fzozJi kpQCgY"><svg
+                                                                                viewBox="0 0 40 48">
+                                                                                <use
+                                                                                    xlink:href="#https://assets.travix.com/assets/passport-6fe1fd41.svg">
+                                                                                </use>
+                                                                            </svg></div>
+                                                                        <p class="sc-fznyAO eGAfFo">Veuillez saisir
+                                                                            les
+                                                                            noms
+                                                                            tels
+                                                                            qu’ils figurent sur
+                                                                            vos documents de voyage.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="sc-AxmLO jFepqJ">
+
+                                                                <div>
+
+                                                                    <div class="sc-AxmLO sc-fzozJi sc-fzowVh kXxULe">
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-pZOBi daYFJP">
+                                                                                    <div class="sc-fznKkj cQxAsH"><label
+                                                                                            class="sc-fznLPX ihgchQ">Nom</label>
+                                                                                    </div>
+                                                                                    <input
+                                                                                        placeholder="Tel qu’il figure sur le nom"
+                                                                                        type="text"
+                                                                                        class="sc-pJUVA ghIxEK"
+                                                                                        formControlName="first_name"
+                                                                                        [(ngModel)]="passager.first_name"
+                                                                                        [ngClass]="{ 'is-invalid': submitted1 && f1['first_name'].errors }">
+                                                                                    <div *ngIf="submitted1 && f1['first_name'].errors"
+                                                                                        class="invalid-feedback">
+                                                                                        <div
+                                                                                            *ngIf="f1['first_name'].errors['required']">
+                                                                                            first name is required</div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-pZOBi daYFJP">
+                                                                                    <div class="sc-fznKkj cQxAsH"><label
+                                                                                            class="sc-fznLPX ihgchQ">Prenom</label>
+                                                                                    </div>
+                                                                                    <input
+                                                                                        placeholder="Tel qu’il figure sur le prenom"
+                                                                                        type="text"
+                                                                                        class="sc-pJUVA ghIxEK"
+                                                                                        formControlName="last_name"
+                                                                                        [(ngModel)]="passager.last_name"
+                                                                                        [ngClass]="{ 'is-invalid': submitted1 && f1['last_name'].errors }">
+                                                                                    <div *ngIf="submitted1 && f1['last_name'].errors"
+                                                                                        class="invalid-feedback">
+                                                                                        <div
+                                                                                            *ngIf="f1['last_name'].errors['required']">
+                                                                                            last name is required</div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="sc-AxmLO jFepqJ">
+                                                                <div>
+                                                                    <div class="sc-AxmLO sc-fzozJi sc-fzowVh kXxULe">
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-pZOBi daYFJP">
+                                                                                    <div class="sc-fznKkj cQxAsH"><label
+                                                                                            class="sc-fznLPX ihgchQ">Date
+                                                                                            de naissance</label>
+                                                                                    </div>
+                                                                                    <input
+                                                                                        placeholder="Tel qu’il figure sur le Date de naissance"
+                                                                                        type="date"
+                                                                                        class="sc-pJUVA ghIxEK"
+                                                                                        formControlName="Date_of_Birth"
+                                                                                        [(ngModel)]="passager.Date_of_Birth"
+                                                                                        [ngClass]="{ 'is-invalid': submitted1 && f1['Date_of_Birth'].errors }">
+
+
+                                                                                    <div *ngIf="submitted1 && f1['Date_of_Birth'].errors"
+                                                                                        class="invalid-feedback">
+                                                                                        <div
+                                                                                            *ngIf="f1['Date_of_Birth'].errors['required']">
+                                                                                            Date_of_Birth is required
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="sc-fznKkj fzfUae">
+                                                                            <div class="sc-fznKkj fQBmen">
+                                                                                <div class="sc-pZOBi daYFJP">
+                                                                                    <div class="sc-fznKkj cQxAsH"><label
+                                                                                            class="sc-fznLPX ihgchQ">numéro
+                                                                                            de passport</label>
+                                                                                    </div>
+                                                                                    <input
+                                                                                        placeholder="Tel qu’il figure sur le numéro de passport"
+                                                                                        type="text"
+                                                                                        class="sc-pJUVA ghIxEK"
+                                                                                        formControlName="num_passport"
+                                                                                        [(ngModel)]="passager.num_passport"
+                                                                                        [ngClass]="{ 'is-invalid': submitted1 && f1['num_passport'].errors }">
+
+
+                                                                                    <div *ngIf="submitted1 && f1['num_passport'].errors"
+                                                                                        class="invalid-feedback">
+                                                                                        <div
+                                                                                            *ngIf="f1['num_passport'].errors['required']">
+                                                                                            num_passport is required
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="sc-AxmLO sc-fzozJi jUBnGr">
+                                                                <div class="sc-AxmLO sc-fzozJi kowRbn"><button
+                                                                        type="submit"
+                                                                        class="sc-AxmLO sc-fzozJi sc-fzoKki sc-fzoYkl sc-fznzOf addPassanger"><span
+                                                                            class="sc-fzpkJw gEiHfF">Autre
+                                                                            passager</span></button>
+
+                                                                </div>
+                                                                <div class="sc-AxmLO sc-fzozJi kowRbn"
+                                                                    *ngIf="connectedClient"><button type="button"
+                                                                        (click)="valider()"
+                                                                        class="sc-AxmLO sc-fzozJi sc-fzoKki sc-fzoYkl sc-fznzOf cDMXet"><span
+                                                                            class="sc-fzpkJw gEiHfF">Valider</span></button>
+                                                                </div>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="!connectedClient" class="sc-AxmLO sc-fzozJi cqLxmt">
+                                    <h1 class="sc-AxjAm fjduYK">Contact</h1>
+                                </div>
+                                <div>
+                                    <div *ngIf="!connectedClient">
+                                        <form [formGroup]="contactForm" (ngSubmit)="suivant()">
+                                            <div class="sc-AxmLO bPanSu">
+
+                                                <div class="sc-fzqOul gatuqC">
+                                                    <div class="sc-fzqzEs ejSgoq">
+
+                                                        <div class="sc-fzoXzr fxORek"></div>
+                                                        <div class="sc-AxmLO sc-fzozJi jJNgjT">
+                                                            <div class="sc-AxmLO dtoZge"><label for="selectedBooker"
+                                                                    class="sc-fznLPX ihgchQ">Personne effectuant la
+                                                                    réservation</label>
+                                                                <div>
+                                                                    <div class="sc-fznKkj fzfUae">
+                                                                        <div class="sc-pHIBf ldImiq">
+                                                                            <div class="sc-AxmLO sc-fzozJi hROsPi"><span
+                                                                                    class="sc-qZtCU kCQNAb"><svg
+                                                                                        height="15" viewBox="0 0 20 20"
+                                                                                        width="15"
+                                                                                        class="sc-fznZeY kAafPq">
+                                                                                        <use
+                                                                                            xlink:href="#https://assets.travix.com/assets/chevron-vertical-b812e250.svg">
+                                                                                        </use>
+                                                                                    </svg></span></div><select
+                                                                                (change)="getClientInfo($event)"
+                                                                                data-name="selectedBooker"
+                                                                                class="sc-pQEbo eMylmX">
+                                                                                <option *ngFor="let passager of
+                                                                                    passagerList">
+                                                                                    {{passager.first_name}}
+                                                                                    {{passager.last_name}}
+                                                                                </option>
+
+                                                                                <option value="-1">Autre personne
+                                                                                    effectuant
+                                                                                    la réservation </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="sc-AxmLO sc-fzoiQi jpcuP">
+
+                                                                <div class="sc-AxmLO jFepqJ">
+                                                                    <div>
+                                                                        <div
+                                                                            class="sc-AxmLO sc-fzozJi sc-fzowVh kXxULe">
+                                                                            <div class="sc-fznKkj fzfUae">
+                                                                                <div class="sc-fznKkj fQBmen">
+                                                                                    <div class="sc-pZOBi daYFJP">
+                                                                                        <div class="sc-fznKkj cQxAsH">
+                                                                                            <label
+                                                                                                class="sc-fznLPX ihgchQ">Nom</label>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            placeholder="Tel qu’il figure sur le nom"
+                                                                                            type="text"
+                                                                                            class="sc-pJUVA ghIxEK"
+                                                                                            formControlName="first_name"
+                                                                                            [(ngModel)]="client.first_name"
+                                                                                            [ngClass]="{ 'is-invalid': submitted && f['first_name'].errors }">
+                                                                                        <div *ngIf="submitted && f['first_name'].errors"
+                                                                                            class="invalid-feedback">
+                                                                                            <div
+                                                                                                *ngIf="f['first_name'].errors['required']">
+                                                                                                first name is required
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                            <div class="sc-fznKkj fzfUae">
+                                                                                <div class="sc-fznKkj fQBmen">
+                                                                                    <div class="sc-pZOBi daYFJP">
+                                                                                        <div class="sc-fznKkj cQxAsH">
+                                                                                            <label
+                                                                                                class="sc-fznLPX ihgchQ">Prénom</label>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            placeholder="Tel qu’il figure sur le prenomt"
+                                                                                            type="text"
+                                                                                            class="sc-pJUVA ghIxEK"
+                                                                                            [(ngModel)]="client.last_name"
+                                                                                            formControlName="last_name"
+                                                                                            [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors }">
+                                                                                        <div *ngIf="submitted && f['last_name'].errors"
+                                                                                            class="invalid-feedback">
+                                                                                            <div
+                                                                                                *ngIf="f['last_name'].errors['required']">
+                                                                                                last name is required
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="sc-AxmLO jFepqJ">
+                                                                    <div>
+                                                                        <div
+                                                                            class="sc-AxmLO sc-fzozJi sc-fzowVh kXxULe">
+                                                                            <div class="sc-fznKkj fzfUae">
+                                                                                <div class="sc-fznKkj fQBmen">
+                                                                                    <div class="sc-pZOBi daYFJP">
+                                                                                        <div class="sc-fznKkj cQxAsH">
+                                                                                            <label
+                                                                                                class="sc-fznLPX ihgchQ">Télephone</label>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            placeholder="Tel qu’il figure sur le télephone"
+                                                                                            type="text"
+                                                                                            class="sc-pJUVA ghIxEK"
+                                                                                            formControlName="phone"
+                                                                                            [(ngModel)]="client.phone"
+                                                                                            [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
+
+
+                                                                                        <div *ngIf="submitted && f['phone'].errors"
+                                                                                            class="invalid-feedback">
+                                                                                            <div
+                                                                                                *ngIf="f['phone'].errors['required']">
+                                                                                                phone is required</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="sc-fznKkj fzfUae">
+                                                                                <div class="sc-fznKkj fQBmen">
+                                                                                    <div class="sc-pZOBi daYFJP">
+                                                                                        <div class="sc-fznKkj cQxAsH">
+                                                                                            <label
+                                                                                                class="sc-fznLPX ihgchQ">Adress
+                                                                                                e-mail</label>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            placeholder="Tel qu’il figure sur le Adress e-mail"
+                                                                                            type="text"
+                                                                                            class="sc-pJUVA ghIxEK"
+                                                                                            [(ngModel)]="client.email_address"
+                                                                                            formControlName="email_address"
+                                                                                            [ngClass]="{ 'is-invalid': submitted && f['email_address'].errors }">
+
+
+                                                                                        <div *ngIf="submitted && f['email_address'].errors"
+                                                                                            class="invalid-feedback">
+                                                                                            <div
+                                                                                                *ngIf="f['email_address'].errors['required']">
+                                                                                                email address is
+                                                                                                required
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="sc-AxmLO sc-fzozJi jUBnGr">
+                                                                    <div class="sc-AxmLO sc-fzozJi kowRbn"><button
+                                                                            type="submit"
+                                                                            class="sc-AxmLO sc-fzozJi sc-fzoKki sc-fzoYkl sc-fznzOf cDMXet"><span
+                                                                                class="sc-fzpkJw gEiHfF">Valider</span></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
