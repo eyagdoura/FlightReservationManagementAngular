@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Numéro de reservation</th>
+            <th>Date de reservation</th>
+            <th>Airport De depart</th>
+            <th>Airport d'arrivé</th>
+            <th>Date de départ</th>
+            <th>Company</th>
+        </tr>
+        <tr *ngFor="let reservation of listReservation">
+            <td>{{reservation.numReservation}}</td>
+            <td> {{reservation.dateReservation}}</td>
+            <td> {{reservation.flight.airportDep.name}}</td>
+            <td> {{reservation.flight.airportArriv.name}}</td>
+            <td> {{reservation.flight.datedep}}</td>
+            <td>
+                <img src="./assets/companiesLogo/{{reservation.flight.company.name}}.png" width="25px" height="25px">
+                {{reservation.flight.company.name}}
+            </td>
+        </tr>
+
+
+    </table>
+
+</body>
+
+</html>

@@ -1,3 +1,4 @@
+import { ListReservationComponent } from './compo/reservation/list-reservation/list-reservation.component';
 import { FlightFormComponent } from './compo/flight/flight-form/flight-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'createFlight', component: FlightFormComponent },
   { path: '', component: SearchBarComponent },
   { path: 'reservation', component: ReservationFormComponent },
+  { path: 'listReservation', component: ListReservationComponent },
+
 ];
 
 @NgModule({

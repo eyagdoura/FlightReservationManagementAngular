@@ -24,6 +24,15 @@ export class ReservationService {
       )
 
   }
+
+  getReservationByClient(id: number): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(environment.API_URL + "Reservation/getReservationByClient/" + id, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+
+  }
+
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

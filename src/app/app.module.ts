@@ -18,6 +18,7 @@ import { SearchBarComponent } from './compo/search/search-bar/search-bar.compone
 import { HomePageComponent } from './compo/home-page/home-page.component';
 import { SearchListFlightComponent } from './compo/search/search-list-flight/search-list-flight.component';
 import { ReservationFormComponent } from './compo/reservation/reservation-form/reservation-form.component';
+import { ListReservationComponent } from './compo/reservation/list-reservation/list-reservation.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReservationFormComponent } from './compo/reservation/reservation-form/r
     HomePageComponent,
     SearchListFlightComponent,
     ReservationFormComponent,
+    ListReservationComponent,
   ],
   imports: [
     BrowserModule,

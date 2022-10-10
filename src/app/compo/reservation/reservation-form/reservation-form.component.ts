@@ -7,6 +7,7 @@ import { FlightService } from 'src/app/services/flight.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Flight } from 'src/app/Models/Flight';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -30,6 +31,7 @@ export class ReservationFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private FlightService: FlightService,
     private UserService: UserService,
+    private router: Router,
     private reservationService: ReservationService) {
     this.passagerForm = this.formBuilder.group({
       first_name: ['', Validators.required],
@@ -94,7 +96,7 @@ export class ReservationFormComponent implements OnInit {
     this.reservation.client = this.client;
     this.reservation.dateReservation = new Date();
     this.reservation.numReservation = this.generateNumReservation().toString();
-    this.reservation.etatReservation = "CONFIRMITE";
+    this.reservation.etatReservation = "CONFIRMED";
     this.reservation.flight = this.flight;
 
     try {
@@ -102,6 +104,8 @@ export class ReservationFormComponent implements OnInit {
         this.reservation.numReservation = passager.first_name[0] + passager.last_name[0] + this.reservation.numReservation
         this.reservation.passager = passager;
         this.reservationService.createReservation(this.reservation).subscribe((data) => {
+
+          this.router.navigate(['/listReservation']);
         });
       }
       alert("Reservation ajouté avec succés");
