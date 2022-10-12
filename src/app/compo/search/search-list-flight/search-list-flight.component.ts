@@ -19,6 +19,7 @@ export class SearchListFlightComponent implements OnInit {
   reserver(flight: Flight) {
     this.flightService.setSelectedFlight(flight);
     localStorage.setItem("FLIGHT", JSON.stringify(this.flightService));
+
     this.router.navigate(['reservation']);
   }
 

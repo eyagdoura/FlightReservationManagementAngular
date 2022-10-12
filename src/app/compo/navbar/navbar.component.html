@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="navbar.visible">
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-secondary my-2 my-sm-0 login-btn" type="submit" style="padding: 0px;"
+                *ngIf="!isConnected" (click)="LoginOrLogout()">
+                <img class="icon-login" src="https://img.icons8.com/cute-clipart/64/000000/login-rounded-right.png" />
+                Login</button>
+            <button class="btn btn-secondary my-2 my-sm-0 login-btn" type="submit" style="padding: 0px;"
+                *ngIf="isConnected" (click)="LoginOrLogout()">
+                <img class="icon-login" src="https://img.icons8.com/external-kmg-design-detailed-outline-kmg-design/64/000000/external-log-out-user-interface-kmg-design-detailed-outline-kmg-design.png"/>
+                Log-out</button>
+        </form>
+    </div>
+</nav>

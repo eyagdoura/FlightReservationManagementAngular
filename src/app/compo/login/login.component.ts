@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Auth } from 'src/app/Models/auth';
 import { User } from 'src/app/Models/user';
 import { LoginService } from 'src/app/services/login.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private loginService: LoginService,
     private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private navbar: NavbarService) {
     this.loginForm = this.formBuilder.group({
       email_address: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   ngOnInit(): void {
+    this.navbar.hide();
   }
 
   onSubmit() {
@@ -50,10 +53,12 @@ export class LoginComponent implements OnInit {
       else if (data.role == "ADMIN") {
         localStorage.setItem('ADMIN', JSON.stringify(data));
         this.router.navigate(['/createFlight']);
+        this.navbar.show();
       }
       else if (data.role == "CLIENT") {
         localStorage.setItem('CLIENT', JSON.stringify(data));
         this.router.navigate(['']);
+        this.navbar.show();
       }
     });
   }

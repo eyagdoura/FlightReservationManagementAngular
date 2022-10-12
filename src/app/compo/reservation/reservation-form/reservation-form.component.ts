@@ -104,7 +104,6 @@ export class ReservationFormComponent implements OnInit {
         this.reservation.numReservation = passager.first_name[0] + passager.last_name[0] + this.reservation.numReservation
         this.reservation.passager = passager;
         this.reservationService.createReservation(this.reservation).subscribe((data) => {
-
           this.router.navigate(['/listReservation']);
         });
       }
